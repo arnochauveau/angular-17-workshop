@@ -40,5 +40,11 @@ todos = [
 - The `todo-list-item` should configure an `@Input()`-property called `todo`. 
 - The todo should be passed with the box syntax. `[todo]="todo"`.
 
+### Passing events from child to parent.
+- in the `todo-list-item` component's template, add a button 'complete'. 
+- In the `todo-list-item` component's TS, add the configuration needed for an output event called `deleteTodo`. 
+- Emit an event on this output when the complete button is clicked.
+- In the `todo-list` component, call a `deleteTodo` function that deletes the todo from the array when the event is triggered. TIP: pass the `$index` variable from the `@for` block as a parameter to this function.
+
 ### Bonus:
 - Add a bit of styling to the app and remove the test templates. 
