@@ -1,22 +1,19 @@
 # Workshop Angular
 
-## EX.5
+## EX.6
 
-- add a `<form></form>` to the new-todo page's template.
-- in the form, add a `<label>` and an `<input>` of type text
-- add a button of type `submit`
-
-- in the page's TS file, add a property `newTodoText = '';`
-- link the property to the input element with `[(ngModel)]="newTodoText"`
-
-- in the todo service, add a function that appends a new string to the array and then navigates to the overview page:
-```ts
- addTodo(todoText: string) {
-    this.todos = [...this.todos, todoText];
-
-    this.router.navigateByUrl((''));
-  }
+- In order to try out the HTTPclient, a new npm script was added to the package.json. Run the following alongside the angular dev server to host a local API server:
 ```
-- add a function to the newTodo page's typescript file that calls the new addTodo function on the service with the value of the property `newTodoText`
+npm run server
+```
 
-- link the `(submit)` event of the form element to this function.
+- Because the server doesn't support string arrays, I refactored the app for you to support Todo objects.
+
+- in the app.config.ts file, add the HttpClientProvider:
+```ts
+export const appConfig: ApplicationConfig = {
+  providers: [provideRouter(routes), provideHttpClient()],
+};
+```
+
+- in the Todo service, some methods now have placeholder comments. Try figuring out how to use the HttpClient to delete, post and get the todos from http://localhost:3000/todos. After delete and post, the todos should be fetched again. After the get request, the todos array should be updated and the `calculateAmountOfTodos()` function should be called
