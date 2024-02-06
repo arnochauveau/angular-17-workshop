@@ -18,16 +18,24 @@ export class TodoService {
   }
 
   deleteTodo(id: string) {
-    // TODO
+    this.httpClient.delete(`http://localhost:3000/todos/${id}`).subscribe((_) => this.getTodos());
   }
 
   addTodo(todoText: string) {
-    // TODO
+    this.httpClient
+      .post('http://localhost:3000/todos', { text: todoText })
+      .subscribe((_) => this.getTodos());
+
     this.router.navigateByUrl('');
   }
 
   private getTodos() {
-    // TODO
+    this.httpClient
+      .get<Todo[]>('http://localhost:3000/todos')
+      .subscribe((todos) => {
+        this.todos = todos;
+        this.calculateAmountOfTodos();
+      });
   }
 
   private calculateAmountOfTodos() {
