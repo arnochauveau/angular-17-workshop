@@ -1,27 +1,45 @@
-# AngularWorkshop
+# Workshop Angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.3.
+## Setting up your dev environment
 
-## Development server
+### Prerequisites
+- An IDE like Visual Studio Code or Webstorm
+- The Angular Language Service plugin : https://angular.io/guide/language-service#angular-language-service-in-your-editor
+- NodeJS version 18.13.X or 20.9.X
+- Git
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### Generate an Angular project
 
-## Code scaffolding
+- run `npx ng new` in the angular-workshop folder with your CLI.
+- give it the name `todo-app`
+- select `CSS` as the stylesheet format.
+- select `No` for the SSR and SSG support
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+You should now have a directory with a working Angular app in it. 
+To verify this, `cd` into the `todo-app` folder and run `npm start`.
 
-## Build
+Open http://localhost:4200/ in your browser to verify that the app works.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Your first component
 
-## Running unit tests
+- In the todo-app generate a new component in the `components` folder called `todo-app` 
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+`npx ng generate component components/todo-app`
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### Using your component
+- In the appcomponent's typescript file, remove the contents of the `imports` array and add your component's typescript class name `TodoAppComponent`.Your editor should automatically assist you with adding the typescipt import `import { TodoAppComponent } from './components/todo-app/todo-app.component';`. 
 
-## Further help
+- In your appcomponent's HTML(template) file, remove all the pregenerated code and add your newly generated component:
+`<app-todo-app/>`
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- Try running your app, you should see `todo-app works` in your browser.
+
+### Dynamic data 
+- Add a property to the todo-app component's class `appName = 'todo-app dynamic property';` 
+- in your todo-app component's HTML template, use the `{{}}` syntax to show the value in the `<p></p>`element
+
+### generate the rest of the app components. 
+- In the `components` folder, generate the following components: todo-list, todo-listitem and todo-metrics.
+- Show the todo-list and todo-metrics in the todo-app component
+- The todo-list-item should be shown in the todo-list component.
