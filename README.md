@@ -1,20 +1,27 @@
 # Workshop Angular
 
-## EX.3 
+## EX.4
 
-### generating a service
+### refactoring to presenter/container pattern
 
-- generate a service with the following command: `npx ng g s services/todo` or `npx ng generate service services/todo`
-- Add the service to the TodoAppComponent TS by using the `inject()` function.
-- Move the array with todos and the deleteTodos function from TodoList to the service.
+- generate 2 components: 
+```bash
+npx ng g c pages/new-todo-page
+npx ng g c pages/todo-overview-page
+```
+- move all the styles, html and typescript from the `todo-app` component to the `todo-overview` page. Watch out with the typescript, you can't just copy paste everything! Delete the `todo-app` component.
 
-- pass the todos from the todo app to the todolist with the following configuration:  `@Input() todos: string[] = [];`
 
-- when the button is pressed to commplete a todo, we also want to pass it from the `todo-list-item` component all the way up to the `todo-app` component. From there, we want to call the `deleteTodo` function on the service. You'll need to add this configuration: `@Output() deleteTodo = new EventEmitter<number>();` and you'll need to call the emit function with the index in the following way `(deleteTodo)="deleteTodo.emit($index)"` in the todo-list component and in the following way `(deleteTodo)="todoService.deleteTodo($event)"` in the todo-app component.
+### using the router
+- Add configuration to the `app.routes.ts` files: 
+    - the `''` path should show the `todo-overview` page
+    - the `'new'` page should show the `new-todo` page
 
-### bonus
+replace the `<app-todo-app/>` component usage in the `app.component.html` with `<router-outlet/>`. don't forget to import the router-outlet and remove the import to the `todo-app` component.
 
-- expose a property on the service with the amount of todos `amountOfTodos` assign this to the length of the array. 
-- when a todo is deleted this property should be decreased by one.
-- Pass this property to the `todo-metrics` component via an input and show it in the component.
-- If the amount of todos reaches zero, the todo-metrics should show a message `Congrats on completing all todos!`
+- the app should now work again like before.
+
+### adding links
+- add a an `<a>New Todo</a>` element with a `routerLink` (don't forget to import) to the new-todo page. Add this `<a>` element in the `todo-list` component at the bottom.
+
+- on the `new-todo` page, add a link back to the `/` path.
