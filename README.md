@@ -1,44 +1,20 @@
 # Workshop Angular
 
-## EX.2: 
+## EX.3 
 
-### Handling user events 
+### generating a service
 
-- Add a new property `showMetrics = true;` to the todo-app component's typescript file.
-- Add a function `toggleMetrics` to the todo-app component's typescript file. Write code that sets the `showMetrics` to the opposite of it's current value. 
+- generate a service with the following command: `npx ng g s services/todo` or `npx ng generate service services/todo`
+- Add the service to the TodoAppComponent TS by using the `inject()` function.
+- Move the array with todos and the deleteTodos function from TodoList to the service.
 
-> 🚨 In Typescript (and javascript) classes you need to use `this.` to access properties and functions in the same class. In the template this is automatically handled for you. (e.g. `this.showMetrics` in TS, `showMetrics` in the HTML template).
+- pass the todos from the todo app to the todolist with the following configuration:  `@Input() todos: string[] = [];`
 
-- in the todo-app component's HTML template, add a button `<button>Toggle Metrics</button>`.
-- When the button is clicked, the `toggleMetrics` function should be called. 
+- when the button is pressed to commplete a todo, we also want to pass it from the `todo-list-item` component all the way up to the `todo-app` component. From there, we want to call the `deleteTodo` function on the service. You'll need to add this configuration: `@Output() deleteTodo = new EventEmitter<number>();` and you'll need to call the emit function with the index in the following way `(deleteTodo)="deleteTodo.emit($index)"` in the todo-list component and in the following way `(deleteTodo)="todoService.deleteTodo($event)"` in the todo-app component.
 
-### Conditional rendering
+### bonus
 
-- Only show the todo-metrics component when the `showMetrics` property is `true`. Use `@if`-blocks for this.
-- When the property is false, show a message: `Metrics hidden` in a `<p>` element.
-
-### Rendering lists
-
-- In our todo-list component TS, add the following array of todos: 
-```ts
-todos = [
-    'reis ver',
-    'drink wijn',
-    'denk na',
-    'lach hard',
-    'duik diep',
-    'kom terug',
-  ];
-```
-- In the todo-list HTML, add an `<ul>` (unordered list) element. 
-- for each element in the todos array, show an `li`-element containing the value. Use the `@for` block for this.
-- When the array is empty, `<p>no more todos</p>` should be shown. Use the `@empty` block for this
-
-### Passing data to a child component.
-
-- In the todo-list component, instead of using an `<li>` for each element in the array. Pass the todo to the `todo-list-item` component via an input. 
-- The `todo-list-item` should configure an `@Input()`-property called `todo`. 
-- The todo should be passed with the box syntax. `[todo]="todo"`.
-
-### Bonus:
-- Add a bit of styling to the app and remove the test templates. 
+- expose a property on the service with the amount of todos `amountOfTodos` assign this to the length of the array. 
+- when a todo is deleted this property should be decreased by one.
+- Pass this property to the `todo-metrics` component via an input and show it in the component.
+- If the amount of todos reaches zero, the todo-metrics should show a message `Congrats on completing all todos!`
