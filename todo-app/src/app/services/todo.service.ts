@@ -24,4 +24,9 @@ export class TodoService {
     this.amountOfTodos--;
   }
 
+  addTodo(todoText: string) {
+    this.todos = [...this.todos, todoText];
+
+    this.router.navigateByUrl((''));
+  }
 }

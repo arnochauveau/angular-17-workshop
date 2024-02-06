@@ -1,3 +1,11 @@
-<p>new-todo-page works!</p>
-<br/>
-<a routerLink="/">Back to overview</a>
+<header>
+  <h1>New Todo</h1>
+  <button routerLink="/">Back to overview</button>
+</header>
+
+<form (submit)="addTodo()">
+  <label for="todoText">text: </label>
+  <input name="todoText" type="text" [(ngModel)]="newTodoText" />
+  <br/><br/>
+  <button type="submit">Add Todo</button>
+</form>
