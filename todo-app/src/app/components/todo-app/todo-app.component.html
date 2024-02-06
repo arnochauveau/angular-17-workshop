@@ -3,10 +3,10 @@
   <button (click)="toggleMetrics()">Toggle Metrics</button>
 </header>
 
-<app-todo-list />
+<app-todo-list [todos]="todoService.todos" (deleteTodo)="todoService.deleteTodo($event)"/>
 
 @if(showMetrics) {
-  <app-todo-metrics />
+  <app-todo-metrics [amountOfTodos]="todoService.amountOfTodos"/>
 } @else {
   <p>Metrics hidden</p>
 }

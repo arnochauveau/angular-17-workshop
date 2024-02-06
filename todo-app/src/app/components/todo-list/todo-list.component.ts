@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { TodoListItemComponent } from '../todo-list-item/todo-list-item.component';
 
 @Component({
@@ -9,18 +9,7 @@ import { TodoListItemComponent } from '../todo-list-item/todo-list-item.componen
   imports: [TodoListItemComponent],
 })
 export class TodoListComponent {
-  todos = [
-    'reis ver',
-    'drink wijn',
-    'denk na',
-    'lach hard',
-    'duik diep',
-    'kom terug',
-  ];
+  @Input() todos: string[] = [];
+  @Output() deleteTodo = new EventEmitter<number>();
 
-
-  deleteTodo(index: number) {
-    const todoToDelete = this.todos[index];
-    this.todos = this.todos.filter(t => t !== todoToDelete);
-  }
 }

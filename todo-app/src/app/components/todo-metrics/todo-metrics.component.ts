@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-todo-metrics',
@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './todo-metrics.component.css'
 })
 export class TodoMetricsComponent {
-
+  @Input() amountOfTodos = 0;
 }
