@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { TodoListItemComponent } from '../todo-list-item/todo-list-item.component';
 import { RouterLink } from '@angular/router';
+import { Todo } from '../../services/todo.service';
 
 @Component({
   selector: 'app-todo-list',
@@ -10,7 +11,7 @@ import { RouterLink } from '@angular/router';
   imports: [TodoListItemComponent, RouterLink],
 })
 export class TodoListComponent {
-  @Input() todos: string[] = [];
-  @Output() deleteTodo = new EventEmitter<number>();
+  @Input() todos: Todo[] = [];
+  @Output() deleteTodo = new EventEmitter<string>();
 
 }

@@ -1,7 +1,7 @@
 <h2>Todos</h2>
 <ul>
   @for (todo of todos; track $index) {
-    <app-todo-list-item [todo]="todo" (deleteTodo)="deleteTodo.emit($index)" />
+    <app-todo-list-item [todo]="todo" (deleteTodo)="deleteTodo.emit($event)" />
   }
   @empty {
   <p>no more todos</p>

@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -6,27 +7,35 @@ import { Router } from '@angular/router';
 })
 export class TodoService {
   router = inject(Router);
+  httpClient = inject(HttpClient);
 
-  todos = [
-    'reis ver',
-    'drink wijn',
-    'denk na',
-    'lach hard',
-    'duik diep',
-    'kom terug',
-  ];
+  todos: Todo[] = [];
 
-  amountOfTodos = this.todos.length;
+  amountOfTodos = 0;
 
-  deleteTodo(index: number) {
-    const todoToDelete = this.todos[index];
-    this.todos = this.todos.filter((t) => t !== todoToDelete);
-    this.amountOfTodos--;
+  constructor() {
+    this.getTodos();
+  }
+
+  deleteTodo(id: string) {
+    // TODO
   }
 
   addTodo(todoText: string) {
-    this.todos = [...this.todos, todoText];
+    // TODO
+    this.router.navigateByUrl('');
+  }
 
-    this.router.navigateByUrl((''));
+  private getTodos() {
+    // TODO
+  }
+
+  private calculateAmountOfTodos() {
+    this.amountOfTodos = this.todos.length;
   }
 }
+
+export type Todo = {
+  id: string;
+  text: string;
+};

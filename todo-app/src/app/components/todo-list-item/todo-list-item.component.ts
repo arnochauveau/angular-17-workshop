@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Todo } from '../../services/todo.service';
 
 @Component({
   selector: 'app-todo-list-item',
@@ -9,7 +10,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class TodoListItemComponent {
 
-  @Input() todo: string = '';
+  @Input() todo: Todo | null = null;
 
   @Output() deleteTodo = new EventEmitter();
 
