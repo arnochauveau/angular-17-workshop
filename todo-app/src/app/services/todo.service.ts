@@ -1,9 +1,12 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TodoService {
+  router = inject(Router);
+
   todos = [
     'reis ver',
     'drink wijn',
@@ -20,4 +23,5 @@ export class TodoService {
     this.todos = this.todos.filter((t) => t !== todoToDelete);
     this.amountOfTodos--;
   }
+
 }
