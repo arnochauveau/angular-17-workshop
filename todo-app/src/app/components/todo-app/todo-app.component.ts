@@ -11,4 +11,9 @@ import { TodoMetricsComponent } from "../todo-metrics/todo-metrics.component";
 })
 export class TodoAppComponent {
   appName = 'todo-app dynamic property';
+  showMetrics = true;
+
+  toggleMetrics() {
+    this.showMetrics = !this.showMetrics;
+  }
 }

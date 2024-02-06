@@ -1,2 +1,9 @@
-<p>todo-list works</p>
-<app-todo-list-item/>
+<h2>Todos</h2>
+<ul>
+  @for (todo of todos; track $index) {
+    <app-todo-list-item [todo]="todo" />
+  }
+  @empty {
+    <p>no more todos</p>
+  }
+</ul>

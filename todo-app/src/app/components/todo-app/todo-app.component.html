@@ -1,3 +1,12 @@
-<p>{{appName}}</p>
-<app-todo-list/>
-<app-todo-metrics/>
+<header>
+  <h1>Todo App </h1>
+  <button (click)="toggleMetrics()">Toggle Metrics</button>
+</header>
+
+<app-todo-list />
+
+@if(showMetrics) {
+  <app-todo-metrics />
+} @else {
+  <p>Metrics hidden</p>
+}
