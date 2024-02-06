@@ -1,4 +1,14 @@
 :host{
-  margin-bottom: 8px;
   display: block;
+  padding: 8px;
+  border-radius: 16px;
+}
+
+:host:hover {
+  background-color: rgb(217, 217, 217);
+}
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

@@ -17,4 +17,10 @@ export class TodoListComponent {
     'duik diep',
     'kom terug',
   ];
+
+
+  deleteTodo(index: number) {
+    const todoToDelete = this.todos[index];
+    this.todos = this.todos.filter(t => t !== todoToDelete);
+  }
 }
