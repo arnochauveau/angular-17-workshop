@@ -1,45 +1,44 @@
 # Workshop Angular
 
-## Setting up your dev environment
+## EX.2: 
 
-### Prerequisites
-- An IDE like Visual Studio Code or Webstorm
-- The Angular Language Service plugin : https://angular.io/guide/language-service#angular-language-service-in-your-editor
-- NodeJS version 18.13.X or 20.9.X
-- Git
+### Handling user events 
 
-### Generate an Angular project
+- Add a new property `showMetrics = true;` to the todo-app component's typescript file.
+- Add a function `toggleMetrics` to the todo-app component's typescript file. Write code that sets the `showMetrics` to the opposite of it's current value. 
 
-- run `npx ng new` in the angular-workshop folder with your CLI.
-- give it the name `todo-app`
-- select `CSS` as the stylesheet format.
-- select `No` for the SSR and SSG support
+> 🚨 In Typescript (and javascript) classes you need to use `this.` to access properties and functions in the same class. In the template this is automatically handled for you. (e.g. `this.showMetrics` in TS, `showMetrics` in the HTML template).
 
-You should now have a directory with a working Angular app in it. 
-To verify this, `cd` into the `todo-app` folder and run `npm start`.
+- in the todo-app component's HTML template, add a button `<button>Toggle Metrics</button>`.
+- When the button is clicked, the `toggleMetrics` function should be called. 
 
-Open http://localhost:4200/ in your browser to verify that the app works.
+### Conditional rendering
 
-### Your first component
+- Only show the todo-metrics component when the `showMetrics` property is `true`. Use `@if`-blocks for this.
+- When the property is false, show a message: `Metrics hidden` in a `<p>` element.
 
-- In the todo-app generate a new component in the `components` folder called `todo-app` 
+### Rendering lists
 
-`npx ng generate component components/todo-app`
+- In our todo-list component TS, add the following array of todos: 
+```ts
+todos = [
+    'reis ver',
+    'drink wijn',
+    'denk na',
+    'lach hard',
+    'duik diep',
+    'kom terug',
+  ];
+```
+- In the todo-list HTML, add an `<ul>` (unordered list) element. 
+- for each element in the todos array, show an `li`-element containing the value. Use the `@for` block for this.
+- When the array is empty, `<p>no more todos</p>` should be shown. Use the `@empty` block for this
 
+### Passing data to a child component.
 
-### Using your component
-- In the appcomponent's typescript file, remove the contents of the `imports` array and add your component's typescript class name `TodoAppComponent`.Your editor should automatically assist you with adding the typescipt import `import { TodoAppComponent } from './components/todo-app/todo-app.component';`. 
+- In the todo-list component, instead of using an `<li>` for each element in the array. Pass the todo to the `todo-list-item` component via an input. 
+- The `todo-list-item` should configure an `@Input()`-property called `todo`. 
+- The todo should be passed with the box syntax. `[todo]="todo"`.
 
-- In your appcomponent's HTML(template) file, remove all the pregenerated code and add your newly generated component:
-`<app-todo-app/>`
-
-- Try running your app, you should see `todo-app works` in your browser.
-
-### Dynamic data 
-- Add a property to the todo-app component's class `appName = 'todo-app dynamic property';` 
-- in your todo-app component's HTML template, use the `{{}}` syntax to show the value in the `<p></p>`element
-
-### generate the rest of the app components. 
-- In the `components` folder, generate the following components: todo-list, todo-listitem and todo-metrics.
-- Show the todo-list and todo-metrics in the todo-app component
-- The todo-list-item should be shown in the todo-list component.
+### Bonus:
+- Add a bit of styling to the app and remove the test templates. 
