@@ -10,7 +10,8 @@
 
 ### Generate an Angular project
 
-- run `npx ng new` in the angular-workshop folder with your CLI.
+- run `npm i -g @angular/cli@latest`
+- run `ng new` in the angular-workshop folder with your CLI.
 - give it the name `todo-app`
 - select `CSS` as the stylesheet format.
 - select `No` for the SSR and SSG support
